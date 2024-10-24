@@ -5,3 +5,4 @@ tensorflow >= 2.15.0  # ch05
 torch >= 2.0.1        # all
 tqdm >= 4.66.1        # ch05
 tiktoken >= 0.5.1     # ch02, ch04, ch05
+security==1.3.1
