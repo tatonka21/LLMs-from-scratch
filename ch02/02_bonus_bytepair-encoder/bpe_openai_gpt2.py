@@ -153,7 +153,7 @@ def download_vocab():
     subdir = subdir.replace('\\', '/')  # needed for Windows
 
     for filename in ['encoder.json', 'vocab.bpe']:
-        r = requests.get("https://openaipublic.blob.core.windows.net/gpt-2/models/117M/" + filename, stream=True)
+        r = requests.get("https://openaipublic.blob.core.windows.net/gpt-2/models/117M/" + filename, stream=True, timeout=60)
 
         with open(os.path.join(subdir, filename), 'wb') as f:
             file_size = int(r.headers["content-length"])
