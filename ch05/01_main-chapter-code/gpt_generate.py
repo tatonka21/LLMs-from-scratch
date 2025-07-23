@@ -59,7 +59,7 @@ def download_and_load_gpt2(model_size, models_dir):
 
 def download_file(url, destination):
     # Send a GET request to download the file in streaming mode
-    response = requests.get(url, stream=True)
+    response = requests.get(url, stream=True, timeout=60)
 
     # Get the total file size from headers, defaulting to 0 if not present
     file_size = int(response.headers.get("content-length", 0))
