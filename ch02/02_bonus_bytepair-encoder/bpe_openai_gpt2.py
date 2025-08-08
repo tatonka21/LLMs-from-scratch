@@ -28,9 +28,9 @@
 import os
 import json
 import regex as re
-import requests
 from tqdm import tqdm
 from functools import lru_cache
+from security import safe_requests
 
 
 @lru_cache()
@@ -153,7 +153,7 @@ def download_vocab():
     subdir = subdir.replace('\\', '/')  # needed for Windows
 
     for filename in ['encoder.json', 'vocab.bpe']:
-        r = requests.get("https://openaipublic.blob.core.windows.net/gpt-2/models/117M/" + filename, stream=True)
+        r = safe_requests.get("https://openaipublic.blob.core.windows.net/gpt-2/models/117M/" + filename, stream=True)
 
         with open(os.path.join(subdir, filename), 'wb') as f:
             file_size = int(r.headers["content-length"])
